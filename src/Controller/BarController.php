@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Beer;
+use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -70,5 +72,44 @@ class BarController extends AbstractController
             'title' => 'Beers',
             'beers' => $reponse
         ]);
+    }
+
+    /**
+     * @Route("/newbeer", name="create_beer")
+     */
+    public function createBeer(){
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $beer = new Beer();
+        $beer->setname('Super Beer');
+        $beer->setPublishedAt(new \DateTime());
+        $beer->setDescription('Ergonomic and stylish!');
+
+        // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($beer);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+        return new Response('Saved new beer with id '.$beer->getId());
+    }
+
+    /**
+     * @Route("/newcategory", name="create_category")
+     */
+    public function createCategory(){
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $beer = new Category();
+        $beer->setname('biere');
+        $beer->setDescription('toto meilleur');
+
+        // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($beer);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+        return new Response('Saved new beer with id '.$beer->getId());
     }
 }
