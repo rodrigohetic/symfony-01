@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-3">Sidebar</div>
+            <div class="col-9">
+                <h1>{{title}}</h1>
+                <div class="card" style="width: 30rem;">
+                    {% for beer in beers.beers %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ beer.name }}</h5>
+                            <p class="card-text">{{ beer.degree }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
