@@ -44,6 +44,11 @@ class Beer
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $degree;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -122,6 +127,18 @@ class Beer
     public function removeCategory(Category $category): self
     {
         $this->category->removeElement($category);
+
+        return $this;
+    }
+
+    public function getDegree(): ?float
+    {
+        return $this->degree;
+    }
+
+    public function setDegree(?float $degree): self
+    {
+        $this->degree = $degree;
 
         return $this;
     }

@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Beer;
 use App\Entity\Category;
+use App\Repository\BeerRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -98,18 +100,54 @@ class BarController extends AbstractController
      * @Route("/newcategory", name="create_category")
      */
     public function createCategory(){
+        // new category
+        $category = new Category();
+        $category->setName('Houblon');
+        $category->setDescription('Houblon');
+
+        // new beer
+        $beer = new Beer();
+        $beer->setName('Beer new');
+        $beer->setDescription('Ergonomic and stylish!');
+
+        // relates this beer to the category
+        $category->addBeer($beer);
+
         $entityManager = $this->getDoctrine()->getManager();
-
-        $beer = new Category();
-        $beer->setname('biere');
-        $beer->setDescription('toto meilleur');
-
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($category);
         $entityManager->persist($beer);
-
-        // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
 
-        return new Response('Saved new beer with id '.$beer->getId());
+        return new Response(
+            'Saved new beer with id: ' . $beer->getId()
+            . ' and new category with id: ' . $category->getId()
+        );
     }
+
+    /**
+     * @Route("/relation", name="relation")
+     */
+    public function showCategory(BeerRepository $beerRepository){
+        $beers = $beerRepository->findAll();
+        $entityManager = $this->getDoctrine()->getManager();
+
+
+        // new category Blonde
+        $category = new Category();
+        $category->setName('Blonde');
+        $category->setDescription('Blonde');
+
+        foreach ($beers as $beer) {
+            // relates this beer to the category
+            $category->addBeer($beer);
+        }
+
+        $entityManager->persist($category);
+        $entityManager->flush();
+
+        return new Response(
+            'beers'
+        );
+    }
+
 }
