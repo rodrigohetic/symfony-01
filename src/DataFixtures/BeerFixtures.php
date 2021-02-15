@@ -13,6 +13,8 @@ class BeerFixtures extends AppFixtures implements DependentFixtureInterface
         $this->createMany(15, 'beer', function () {
 
             $country = $this->getRandomReference('country');
+            $category = $this->getRandomReference('category');
+            $category_specials = $this->getRandomReference('category_specials');
 
             return (new Beer())
                 ->setName($this->faker->lastName . ' Beer')
@@ -20,7 +22,8 @@ class BeerFixtures extends AppFixtures implements DependentFixtureInterface
                 ->setDescription($this->faker->paragraph(3, true))
                 ->setDegree($this->faker->randomFloat(2, 3, 100))
                 ->setPublishedAt($this->faker->dateTimeBetween('-6 month'))
-                // ->setCategory($this->faker-> setCategoryAccordingToTerm());
+                ->addCategory($category)
+                ->addCategory($category_specials);
         });
     }
 
