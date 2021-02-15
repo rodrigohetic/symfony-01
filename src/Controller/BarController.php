@@ -19,13 +19,13 @@ class BarController extends AbstractController
     }
 
     /**
-     * @Route("/bar", name="bar")
+     * @Route("/", name="home")
      */
     public function bar(): Response
     {
 
         return $this->render('bar/index.html.twig', [
-            'controller_name' => 'BarController',
+            'controller_name' => 'HomeController',
             'title' => 'The Bar',
         ]);
     }
@@ -39,25 +39,6 @@ class BarController extends AbstractController
             'controller_name' => 'MentionController',
             'title' => 'Mentions Légales',
         ]);
-    }
-
-    private function beers_api(): array
-    {
-        $response = $this->client->request(
-            'GET',
-            'https://raw.githubusercontent.com/Antoine07/hetic_symfony/main/Introduction/Data/beers.json'
-        );
-
-        $statusCode = $response->getStatusCode();
-        // $statusCode = 200
-        $contentType = $response->getHeaders()['content-type'][0];
-        // $contentType = 'application/json'
-        $content = $response->getContent();
-        // $content = '{"id":521583, "name":"symfony-docs", ...}'
-        $content = $response->toArray();
-        // $content = ['id' => 521583, 'name' => 'symfony-docs', ...]
-
-        return $content;
     }
 
     /**
@@ -83,61 +64,11 @@ class BarController extends AbstractController
      */
     public function beer(Beer $beer): Response
     {
-        dump($beer);
-
         return $this->render('beer/index.html.twig', [
             'controller_name' => 'BeerController',
             'title' => "Beer Page -".$beer->getName(),
             'beer' => $beer
         ]);
-    }
-
-    /**
-     * @Route("/newbeer", name="create_beer")
-     */
-    public function createBeer(){
-        $entityManager = $this->getDoctrine()->getManager();
-
-        $beer = new Beer();
-        $beer->setname('Super Beer');
-        $beer->setPublishedAt(new \DateTime());
-        $beer->setDescription('Ergonomic and stylish!');
-
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($beer);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
-
-        return new Response('Saved new beer with id '.$beer->getId());
-    }
-
-    /**
-     * @Route("/newcategory", name="create_category")
-     */
-    public function createCategory(){
-        // new category
-        $category = new Category();
-        $category->setName('Houblon');
-        $category->setDescription('Houblon');
-
-        // new beer
-        $beer = new Beer();
-        $beer->setName('Beer new');
-        $beer->setDescription('Ergonomic and stylish!');
-
-        // relates this beer to the category
-        $category->addBeer($beer);
-
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($category);
-        $entityManager->persist($beer);
-        $entityManager->flush();
-
-        return new Response(
-            'Saved new beer with id: ' . $beer->getId()
-            . ' and new category with id: ' . $category->getId()
-        );
     }
 
 }

@@ -8,7 +8,15 @@
             <div class="col-3">Sidebar</div>
             <div class="col-9">
                 <h1>{{title}}</h1>
-                <div class="card" style="width: 30rem;">
+                <div class="card mb-5">
+                    <i class=" waves-effect waves-light">
+                        <img class="col-5 card-img-top" src="https://picsum.photos/200/200" alt="Card image cap">
+                    </i>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ beer.name }}</h5>
+                        <p class="card-text">{{ beer.degree }}</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
                 </div>
             </div>
         </div>
