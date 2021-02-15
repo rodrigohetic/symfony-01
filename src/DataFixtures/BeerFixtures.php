@@ -20,7 +20,7 @@ class BeerFixtures extends AppFixtures implements DependentFixtureInterface
                 ->setDescription($this->faker->paragraph(3, true))
                 ->setDegree($this->faker->randomFloat(2, 3, 100))
                 ->setPublishedAt($this->faker->dateTimeBetween('-6 month'))
-                ;
+                // ->setCategory($this->faker-> setCategoryAccordingToTerm());
         });
     }
 
@@ -33,6 +33,19 @@ class BeerFixtures extends AppFixtures implements DependentFixtureInterface
     {
         return [
             CountryFixtures::class,
+            CategoryFixtures::class
         ];
     }
+
+    // public function setCategoryAccordingToTerm()
+    // {
+    //     $categoriesNormals = ['blonde', 'brune', 'blanche'];
+    //     $categoriesSpecials = ['houblon', 'rose', 'menthe', 'grenadine', 'réglisse', 'marron', 'whisky', 'bio'];
+
+    //     if ($this->term === "normal") {
+    //         return $this->faker->randomElement($categoriesNormals);
+    //     } else {
+    //         return $this->faker->randomElement($categoriesSpecials);
+    //     }
+    // }
 }
