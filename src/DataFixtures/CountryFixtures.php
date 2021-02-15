@@ -8,12 +8,12 @@ class CountryFixtures extends AppFixtures
 {
     protected function loadData(): void
     {
+
         $this->createMany(15, 'country', function () {
+            $countries = ['Belgium', 'France', 'England', 'Germany'];
+
             return (new Country())
-                ->setName($this->faker->country())
-                ->setAddress($this->faker->address())
-                ->setEmail($this->faker->email())
-                ;
+                ->setName($this->faker->randomElement($countries));
         });
     }
 }
