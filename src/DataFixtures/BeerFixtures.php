@@ -11,7 +11,6 @@ class BeerFixtures extends AppFixtures implements DependentFixtureInterface
     protected function loadData(): void
     {
         $this->createMany(15, 'beer', function () {
-
             $country = $this->getRandomReference('country');
             $category = $this->getRandomReference('category');
             $category_specials = $this->getRandomReference('category_specials');

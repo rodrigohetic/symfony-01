@@ -9,18 +9,19 @@ class CategoryFixtures extends AppFixtures implements DependentFixtureInterface
 {
     protected function loadData(): void
     {
-        $this->createMany(3, 'category', function () {
+        $this->createMany(3, 'category', function ($i) {
             $categoriesNormals = ['blonde', 'brune', 'blanche'];
             return (new Category())
-                ->setName($this->faker->randomElement($categoriesNormals))
+                ->setName($categoriesNormals[$i])
                 ->setDescription($this->faker->paragraph(3, true));
         });
 
-        $this->createMany(8, 'category_specials', function () {
+        $this->createMany(8, 'category_specials', function ($i) {
             $categoriesSpecials = ['houblon', 'rose', 'menthe', 'grenadine', 'réglisse', 'marron', 'whisky', 'bio'];
             return (new Category())
-                ->setName($this->faker->randomElement($categoriesSpecials))
-                ->setDescription($this->faker->paragraph(3, true));
+                ->setName($categoriesSpecials[$i])
+                ->setDescription($this->faker->paragraph(3, true))
+                ->setTerm('specials');
         });
     }
 

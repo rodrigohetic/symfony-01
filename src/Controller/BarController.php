@@ -81,15 +81,14 @@ class BarController extends AbstractController
      * @param Beer $beer
      * @return Response
      */
-    public function beer(Beer $beer, int $id): Response
+    public function beer(Beer $beer): Response
     {
-        //$reponse = $this->beers_api();
         dump($beer);
 
         return $this->render('beer/index.html.twig', [
             'controller_name' => 'BeerController',
-            'title' => 'Beers',
-            'beers' => $beer
+            'title' => "Beer Page -".$beer->getName(),
+            'beer' => $beer
         ]);
     }
 
