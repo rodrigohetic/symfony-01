@@ -3,39 +3,31 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block body %}
-     <div class="container">
+    <div class="col-7">
         <div class="row">
-            <div class="col-3">
-                Sidebar
+            <div class="col-12">
+                <h3 class="mb-4">{{title}}</h3>
             </div>
-            <div class="col-7">
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="mb-4">{{title}}</h3>
+            <div class="col-lg-6">
+                <div class="card text-white mb-5">
+                    <i class=" waves-effect waves-light"><img class="card-img" src="https://responsivemart.com/wp-content/uploads/overlay-1.jpg" alt="Card image"></i>
+                    <div class="card-img-overlay waves-effect waves-light">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Last updated 3 mins ago</p>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="card text-white mb-5">
-                            <i class=" waves-effect waves-light"><img class="card-img" src="https://responsivemart.com/wp-content/uploads/overlay-1.jpg" alt="Card image"></i>
-                            <div class="card-img-overlay waves-effect waves-light">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text">Last updated 3 mins ago</p>
-                                <a href="#" class="btn btn-primary card-link">Card link</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card text-white mb-5">
-                            <i class=" waves-effect waves-light"><img class="card-img" src="https://responsivemart.com/wp-content/uploads/overlay-2.jpg" alt="Card image"></i>
-                            <div class="card-img-overlay waves-effect waves-light">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text">Last updated 3 mins ago</p>
-                                <a href="#" class="btn btn-primary card-link">Card link</a>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card text-white mb-5">
+                    <i class=" waves-effect waves-light"><img class="card-img" src="https://responsivemart.com/wp-content/uploads/overlay-2.jpg" alt="Card image"></i>
+                    <div class="card-img-overlay waves-effect waves-light">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Last updated 3 mins ago</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 {% endblock %}
