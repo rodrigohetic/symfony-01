@@ -12,9 +12,10 @@ class ClientFixtures extends AppFixtures
         $this->createMany(15, 'client', function () {
             return (new Client())
                 ->setEmail($this->faker->email())
+                ->setAge($this->faker->numberBetween(18,99))
                 ->setWeight($this->faker->randomFloat(null,0,null))
                 ->setName($this->faker->firstName())
-                ->setNumberBeer($this->faker->randomElement([1, 2, 3, 4, 5]));
+                ->setNumberBeer($this->faker->numberBetween(1,5));
         });
     }
 }

@@ -10,7 +10,7 @@ class StatisticFixtures extends AppFixtures implements DependentFixtureInterface
 {
     protected function loadData(): void
     {
-        $this->createMany(4, 'statistic', function () {
+        $this->createMany(15, 'statistic', function () {
             $beer = $this->getRandomReference('beer');
             $client = $this->getRandomReference('client');
 
