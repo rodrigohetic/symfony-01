@@ -71,4 +71,19 @@ class BarController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/menu", name="menu")
+     */
+    public function mainMenu(string $category_id, string $routeName): Response{
+        $repoCat= $this->getDoctrine()->getRepository(Category::class);
+        $categories = $repoCat ->findByTerm('normal');
+
+        return $this->render('_partials/menu.html.twig', [
+            'categories' => $categories,
+            'category_id' => $category_id,
+            'routeName' => $routeName
+        ]);
+    }
+
+
 }
