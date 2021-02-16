@@ -15,8 +15,8 @@ class StatisticFixtures extends AppFixtures implements DependentFixtureInterface
             $client = $this->getRandomReference('client');
 
             return (new Statistic())
-                ->addBeerId($beer)
-                ->addCliendId($client)
+                ->setBeerId($beer)
+                ->setCliendId($client)
                 ->setScore($this->faker->randomElement([1, 2, 3, 4, 5]));
         });
     }
