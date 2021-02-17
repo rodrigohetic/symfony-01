@@ -21,14 +21,14 @@ Explain (in french) this method :
 ```php
 public function findCatSpecial(int $id)
     {
-        return $this->createQueryBuilder('c')
-            ->join('c.beers', 'b') // raisonner en terme de relation
-            ->where('b.id = :id')
-            ->setParameter('id', $id)
-            ->andWhere('c.term = :term')
-            ->setParameter('term', 'special')
-            ->getQuery()
-            ->getResult();
+1        return $this->createQueryBuilder('c')
+2            ->join('c.beers', 'b') // raisonner en terme de relation
+3            ->where('b.id = :id')
+4            ->setParameter('id', $id)
+5            ->andWhere('c.term = :term')
+6            ->setParameter('term', 'special')
+7            ->getQuery()
+8            ->getResult();
     }
 ```
 
@@ -40,9 +40,9 @@ La fonction `findCatSpecial()`, prend en argument l'`id` d'une bière et retourn
 - Ligne 2 : Jointure entre les tables `category` et `beer` en passant implicitement sur la table `beer_category` (cachée par l'orm).
   → Les tables `category` et `beer` ayant une relation ManyToMany.
 - Ligne 3 + 4 : Filtre sur l'`id` de la bière.
-- Ligne 4 : Filtre sur le `term special` de la `category`.
-- Ligne 5 : Construction de la query.
-- Ligne 6 : Execution de la query.
+- Ligne 5 + 6 : Filtre sur le `term special` de la `category`.
+- Ligne 7 : Construction de la query.
+- Ligne 8 : Execution de la query.
 
 ## Stack used
 
