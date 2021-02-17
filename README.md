@@ -4,15 +4,17 @@
 
 → Made for an HETIC course
 
-See setup infos & course's instructions [here](https://github.com/Antoine07/hetic_symfony/blob/main/Introduction/tp_02_days.md)
+See setup infos & course's [instructions here](https://github.com/Antoine07/hetic_symfony/blob/main/Introduction/tp_02_days.md)
 
-## Group 5
+## Team
 
-- AGNAN Pierre-Alain
-- TAPIA Rodrigo
-- BEN KEBAIER Selima
-- EVANO Thomas
-- MARQUAND Camille
+| Group  5           |
+| ------------------ |
+| AGNAN Pierre-Alain |
+| TAPIA Rodrigo      |
+| BEN KEBAIER Selima |
+| EVANO Thomas       |
+| MARQUAND Camille   |
 
 ## Part 4 (exercise)
 
