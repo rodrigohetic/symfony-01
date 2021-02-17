@@ -44,6 +44,11 @@ La fonction `findCatSpecial()`, prend en argument l'`id` d'une bière et retourn
 - Ligne 7 : Construction de la query.
 - Ligne 8 : Execution de la query.
 
+## UML
+
+[UML](assets/images/UML.png)
+
+
 ## Stack used
 
 - PHP, Symfony framework
