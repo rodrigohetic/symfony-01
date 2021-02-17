@@ -9,6 +9,7 @@
             <h1>{{ beer.name }}</h1>
                 <p class="card-title">Description: {{ beer.description }}</p>
                 <p class="card-text">Degrés: {{ beer.degree }}</p>
+                <p class="card-text">Prix: {{ beer.price }} €</p>
                 <h2>Pays:</h2>
                 <ul class="list-group">
                     {% for country in beerCountry %}
@@ -29,7 +30,7 @@
                         <li class="list-group-item">{{ catNormal.name }}</li>
                     {% endfor %}
                 </ul>
-                <p class="card-text"><small class="text-muted">Publiée le: {{ beer.publishedAt | date('d/m/Y') }}</small></p>
+                <p class="card-text"><small class="text-muted">Mise en ligne le {{ beer.publishedAt | date('d/m/Y') }}</small></p>
             </div>
         </div>
     </div>

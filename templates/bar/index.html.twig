@@ -11,10 +11,10 @@
             {% for beer in lastBeers %}
                 <div class="card mb-5">
                     <div class="card-body">
-                        <h5 class="card-title">{{ beer.name }} | {{ beer.degree }}</h5>
+                        <h5 class="card-title">{{ beer.name }}</h5>
                         <p class="card-text">{{ beer.description }}</p>
-                        <p class="card-text"><small class="text-muted">Last updated {{ beer.getPublishedAt()|date('Y-m-d') }}</small></p>
-                        <a href="{{ path('beer_page', { 'id' : beer.id }) }}" class="btn btn-primary card-link">Card link</a>
+                        <p class="card-text"><small class="text-muted">Mise en ligne le {{ beer.getPublishedAt()|date('d/m/Y') }}</small></p>
+                        <a href="{{ path('beer_page', { 'id' : beer.id }) }}" class="btn btn-primary card-link">Voir plus</a>
                     </div>
                 </div>
             {% endfor %}

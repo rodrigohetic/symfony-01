@@ -88,11 +88,13 @@ class BarController extends AbstractController
      */
     public function statistic(ClientRepository $clientRepo): Response{
         $clients = $clientRepo->findAll();
+        $avgBeerBought= $clientRepo->getAvgNumberBeer();
 
         return $this->render('statistic/index.html.twig', [
             'controller_name' => 'StatisticController',
             'title' => "Statistic",
-            'clients' => $clients
+            'clients' => $clients,
+            'avgBeersBought' => implode($avgBeerBought[0])
         ]);
     }
 

@@ -6,10 +6,11 @@
     <div class="col-3">
         <div class="card mb-2 sticky-top">
             <div class="card-body p-1">
-                <h3 class="card-title">Nombre de clients</h3>
+                <h3 class="card-title">Statistiques</h3>
                 <div class="row no-gutters mb-2">
                     <div class="col-6">
-                        <p>{{ clients|length }}</p>
+                        <p>Nombre total de clients: {{ clients|length }}</p>
+                        <p>Moyenne des bières achetées par client : {{ avgBeersBought }}</p>
                     </div>
                 </div>
             </div>
