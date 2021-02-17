@@ -32,7 +32,7 @@ public function findCatSpecial(int $id)
     }
 ```
 
-Une bière a une catégorie `normal` et une ou plusieurs catégories `spécials`.
+Une bière a une catégorie `normal` et une ou plusieurs catégories `spécial`.
 
 La fonction `findCatSpecial()`, prend en argument l'`id` d'une bière et retourne la ou les catégories `spécials` de cette bière.
 
