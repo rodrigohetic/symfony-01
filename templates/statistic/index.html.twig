@@ -3,6 +3,19 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block body %}
+    <div class="col-3">
+        <div class="card mb-2 sticky-top">
+            <div class="card-body p-1">
+                <h3 class="card-title">Nombre de clients</h3>
+                <div class="row no-gutters mb-2">
+                    <div class="col-6">
+                        <p>{{ clients|length }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="col-7">
         <div class="row">
             <div class="col-12">

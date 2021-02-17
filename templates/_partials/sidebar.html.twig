@@ -1,13 +1,22 @@
 <div class="card mb-2 sticky-top">
     <div class="card-body p-1">
-        <h3 class="card-title">Categories Specials</h3>
+        {% if app.request.attributes.get('_route') == "statistic"%}
+        <h3 class="card-title">Statistic</h3>
         <div class="row no-gutters mb-2">
-            <div class="col-6 pr-2">
-                <img src="http://via.placeholder.com/200x170" class="img-fluid rounded shadow">
-            </div>
             <div class="col-6">
-                <p>Experience quality quality</p>
+                    <p>Clients : </p>
             </div>
         </div>
+            {% else %}
+                <h3 class="card-title">Categories Specials</h3>
+                <div class="row no-gutters mb-2">
+                    <div class="col-6 pr-2">
+                        <img src="http://via.placeholder.com/200x170" class="img-fluid rounded shadow">
+                    </div>
+                    <div class="col-6">
+                        <p>Experience quality quality</p>
+                    </div>
+                </div>
+        {% endif %}
     </div>
 </div>
