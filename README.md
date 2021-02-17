@@ -32,9 +32,9 @@ public function findCatSpecial(int $id)
     }
 ```
 
-Une bière a une catégorie `normal` et une ou plusieurs catégories `spécial`.
+Une bière a une catégorie `normal` et une ou plusieurs catégories `special`.
 
-La fonction `findCatSpecial()`, prend en argument l'`id` d'une bière et retourne la ou les catégories `spécials` de cette bière.
+La fonction `findCatSpecial()`, prend en argument l'`id` d'une bière et retourne la ou les catégories `special` de cette bière.
 
 - Ligne 1 : Construction de la requête sur la table `category` dont l'alias donné est `c`.
 - Ligne 2 : Jointure entre les tables `category` et `beer` en passant implicitement sur la table `beer_category` (cachée par l'orm).
