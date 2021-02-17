@@ -72,8 +72,7 @@ class BarController extends AbstractController
     /**
      * @Route("/menu", name="menu")
      */
-    public function mainMenu(string $category_id, string $routeName): Response{
-        $repoCat= $this->getDoctrine()->getRepository(Category::class);
+    public function mainMenu(CategoryRepository $repoCat, string $category_id, string $routeName): Response{
         $categories = $repoCat ->findByTerm('normal');
 
         return $this->render('_partials/menu.html.twig', [
@@ -88,13 +87,15 @@ class BarController extends AbstractController
      */
     public function statistic(ClientRepository $clientRepo): Response{
         $clients = $clientRepo->findAll();
-        $avgBeerBought= $clientRepo->getAvgNumberBeer();
+        $avgBeerBought = $clientRepo->getAvgNumberBeerByClient();
+        $stdBeerBought = $clientRepo->getStdNumberBeerByClient();
 
         return $this->render('statistic/index.html.twig', [
             'controller_name' => 'StatisticController',
-            'title' => "Statistic",
+            'title' => "Statistiques",
             'clients' => $clients,
-            'avgBeersBought' => implode($avgBeerBought[0])
+            'avgBeersBought' => implode($avgBeerBought[0]),
+            'stdBeersBought' => implode($stdBeerBought[0])
         ]);
     }
 

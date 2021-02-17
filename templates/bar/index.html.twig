@@ -3,21 +3,23 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block body %}
-    <div class="col-7">
-        <div class="row">
-            <div class="col-12">
-                <h3 class="mb-4">{{title}}</h3>
-            </div>
-            {% for beer in lastBeers %}
-                <div class="card mb-5">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ beer.name }}</h5>
-                        <p class="card-text">{{ beer.description }}</p>
-                        <p class="card-text"><small class="text-muted">Mise en ligne le {{ beer.getPublishedAt()|date('d/m/Y') }}</small></p>
-                        <a href="{{ path('beer_page', { 'id' : beer.id }) }}" class="btn btn-primary card-link">Voir plus</a>
+    <div class="card">
+        <div class="card-header">
+            <h1>{{ title }}</h1>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                {% for beer in lastBeers %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ beer.name }}</h5>
+                            <p class="card-text">{{ beer.description }}</p>
+                            <p class="card-text"><small class="text-muted">Mise en ligne le {{ beer.getPublishedAt()|date('d/m/Y') }}</small></p>
+                            <a href="{{ path('beer_page', { 'id' : beer.id }) }}" class="btn btn-primary card-link">Voir plus</a>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}
