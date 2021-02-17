@@ -46,7 +46,7 @@ La fonction `findCatSpecial()`, prend en argument l'`id` d'une bière et retourn
 
 ## UML
 
-[UML](assets/images/UML.png)
+[UML](https://github.com/rodrigohetic/symfony-01/blob/master/assets/images/UML.png)
 
 
 ## Stack used
