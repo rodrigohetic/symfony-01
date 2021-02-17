@@ -1,18 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{title}}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
     <div class="col-9">
-        <div class="card mb-5">
-            <h1>{{title}}</h1>
-            <i class=" waves-effect waves-light">
-                <img class="col-5 card-img-top" src="https://picsum.photos/200/200" alt="Card image cap">
-            </i>
+        <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{ beer.name }}</h5>
-                <p class="card-text">{{ beer.degree }}</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <h1>{{ beer.name }}</h1>
+                <p class="card-title">Description: {{ beer.description }}</p>
+                <p class="card-text">Degrés: {{ beer.degree }}</p>
+                <h2>Pays:</h2>
+                <ul class="list-group">
+                    {% for country in beerCountry %}
+
+                        <li class="list-group-item">{{ country.name }}</li>
+                    {% endfor %}
+                </ul>
+                <h2>Categories spéciales:</h2>
+                <ul class="list-group">
+                    {% for catSpecial in beerCatSpecial %}
+
+                        <li class="list-group-item">{{ catSpecial.name }}</li>
+                    {% endfor %}
+                </ul>
+                <h2>Categories normales:</h2>
+                <ul class="list-group">
+                    {% for catNormal in beerCatNormal %}
+                        <li class="list-group-item">{{ catNormal.name }}</li>
+                    {% endfor %}
+                </ul>
+                <p class="card-text"><small class="text-muted">Publiée le: {{ beer.publishedAt | date('d/m/Y') }}</small></p>
             </div>
         </div>
     </div>
