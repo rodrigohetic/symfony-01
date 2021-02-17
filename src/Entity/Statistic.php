@@ -20,12 +20,12 @@ class Statistic
     /**
      * @ORM\ManyToOne(targetEntity=Beer::class, inversedBy="statistics")
      */
-    private $beer_id;
+    private $beer;
 
     /**
      * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="statistics")
      */
-    private $cliend_id;
+    private $client;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -37,26 +37,26 @@ class Statistic
         return $this->id;
     }
 
-    public function getBeerId(): ?Beer
+    public function getBeer(): ?Beer
     {
-        return $this->beer_id;
+        return $this->beer;
     }
 
-    public function setBeerId(?Beer $beer_id): self
+    public function setBeer(?Beer $beer): self
     {
-        $this->beer_id = $beer_id;
+        $this->beer = $beer;
 
         return $this;
     }
 
-    public function getCliendId(): ?Client
+    public function getClient(): ?Client
     {
-        return $this->cliend_id;
+        return $this->client;
     }
 
-    public function setCliendId(?Client $cliend_id): self
+    public function setClient(?Client $client): self
     {
-        $this->cliend_id = $cliend_id;
+        $this->client = $client;
 
         return $this;
     }
