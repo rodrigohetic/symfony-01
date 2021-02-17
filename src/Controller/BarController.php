@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Beer;
 use App\Entity\Category;
+use App\Repository\ClientRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -85,5 +86,17 @@ class BarController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/statistic", name="statistic")
+     */
+    public function statistic(ClientRepository $clientRepo): Response{
+        $clients = $clientRepo->findAll();
+
+        return $this->render('statistic/index.html.twig', [
+            'controller_name' => 'StatisticController',
+            'title' => "Statistic",
+            'clients' => $clients
+        ]);
+    }
 
 }
