@@ -69,12 +69,24 @@ La fonction `findCatSpecial()`, prend en argument l'`id` d'une bière et retourn
 symfony server:start
 ```
 
+in `.env`
+```
+DATABASE_URL="mysql://root:root@127.0.0.1:<USED_PORT>/<DATEBASE_URL>?serverVersion=5.7"
+```
+
 ### Compile
 
 Install dependancies
 
 ```
+ composer install
  npm i
+```
+
+Build project
+
+```
+npm run build
 ```
 
 Compile assets once
@@ -89,8 +101,4 @@ Compile assets automatically
 npm run watch
 ```
 
-Build
 
-```
-npm run build
-```
