@@ -20,6 +20,7 @@ class BeerFixtures extends AppFixtures implements DependentFixtureInterface
                 ->setCountry($country)
                 ->setDescription($this->faker->paragraph(3, true))
                 ->setDegree($this->faker->randomFloat(2, 3, 100))
+                ->setPrice($this->faker->randomFloat(2,2,10))
                 ->setPublishedAt($this->faker->dateTimeBetween('-6 month'))
                 ->addCategory($category)
                 ->addCategory($category_specials);
