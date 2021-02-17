@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Beer;
 use App\Entity\Category;
+use App\Repository\BeerRepository;
 use App\Repository\ClientRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,12 +23,14 @@ class BarController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function bar(): Response
+    public function bar(BeerRepository $repoBeers): Response
     {
+        $lastBeers = $repoBeers->findLastBeers();
 
         return $this->render('bar/index.html.twig', [
             'controller_name' => 'HomeController',
-            'title' => 'The Bar',
+            'title' => 'Les dernières bières ajoutées',
+            'lastBeers' => $lastBeers
         ]);
     }
 
@@ -39,22 +42,6 @@ class BarController extends AbstractController
         return $this->render('mention/index.html.twig', [
             'controller_name' => 'MentionController',
             'title' => 'Mentions Légales',
-        ]);
-    }
-
-    /**
-     * @Route("/beers", name="beers")
-     */
-    public function beers(): Response
-    {
-        //$reponse = $this->beers_api();
-        $repoBeer = $this->getDoctrine()->getRepository(Beer::class);
-        $reponse = $repoBeer->findByExampleField();
-
-        return $this->render('beers/index.html.twig', [
-            'controller_name' => 'MentionController',
-            'title' => 'Beers',
-            'beers' => $reponse
         ]);
     }
 
