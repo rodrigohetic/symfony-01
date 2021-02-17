@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Beer;
 use App\Entity\Category;
 use App\Repository\BeerRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\ClientRepository;
+use App\Repository\CountryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -50,12 +52,20 @@ class BarController extends AbstractController
      * @param Beer $beer
      * @return Response
      */
-    public function beer(Beer $beer): Response
+    public function beer(Beer $beer, CategoryRepository $repoCat, CountryRepository $repoCountry): Response
     {
+        $beerCatSpecial = $repoCat->findCatSpecial($beer->getId());
+        $beerCatNormal = $repoCat->findByTerm('normal');
+        $beerCountry = $repoCountry->findCountryByBeerId($beer->getId());
+
         return $this->render('beer/index.html.twig', [
             'controller_name' => 'BeerController',
-            'title' => "Beer Page -".$beer->getName(),
-            'beer' => $beer
+            'title' => "Beer Page - ".$beer->getName(),
+            'beer' => $beer,
+            'beerCatSpecial' =>  $beerCatSpecial,
+            'beerCatNormal' =>  $beerCatNormal,
+            'beerCountry' => $beerCountry
+
         ]);
     }
 

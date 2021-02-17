@@ -54,6 +54,11 @@ class Beer
      */
     private $statistics;
 
+    /**
+     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
+     */
+    private $price;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -175,6 +180,18 @@ class Beer
                 $statistic->setBeerId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPrice(): ?string
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?string $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }
