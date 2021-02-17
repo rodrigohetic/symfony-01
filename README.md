@@ -1,8 +1,18 @@
-# Symfony (PHP) Playground
+# TheBar
+
+## Symfony (PHP) Playground
 
 → Made for an HETIC course
 
 See setup infos & course's instructions [here](https://github.com/Antoine07/hetic_symfony/blob/main/Introduction/tp_02_days.md)
+
+## Group 5
+
+- AGNAN Pierre-Alain
+- TAPIA Rodrigo
+- BEN KEBAIER Selima
+- EVANO Thomas
+- MARQUAND Camille
 
 ## Stack used
 
@@ -18,13 +28,13 @@ See setup infos & course's instructions [here](https://github.com/Antoine07/heti
 
 ## Set up working environment
 
-#### Lauch local server
+### Lauch local server
 
 ```
 symfony server:start
 ```
 
-#### Compile
+### Compile
 
 Install dependancies
 
