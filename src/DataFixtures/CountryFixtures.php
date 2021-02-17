@@ -13,7 +13,9 @@ class CountryFixtures extends AppFixtures
             $countries = ['Belgium', 'France', 'England', 'Germany'];
 
             return (new Country())
-                ->setName($countries[$i]);
+                ->setName($countries[$i])
+                ->setAddress($this->faker->address())
+                ->setName($this->faker->email());
         });
     }
 }
