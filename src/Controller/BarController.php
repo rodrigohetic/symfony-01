@@ -55,7 +55,7 @@ class BarController extends AbstractController
     public function beer(Beer $beer, CategoryRepository $repoCat, CountryRepository $repoCountry): Response
     {
         $beerCatSpecial = $repoCat->findCatSpecial($beer->getId());
-        $beerCatNormal = $repoCat->findByTerm('normal');
+        $beerCatNormal = $repoCat->findCatNormal($beer->getId());
         $beerCountry = $repoCountry->findCountryByBeerId($beer->getId());
 
         return $this->render('beer/index.html.twig', [

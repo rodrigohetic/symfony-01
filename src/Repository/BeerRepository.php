@@ -45,16 +45,4 @@ class BeerRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
-
-    public function findBeerByCountryId(int $id)
-    {
-        return $this->createQueryBuilder('b')
-            ->join('b.country', 'c')
-            ->where('c.id = :id')
-            ->setParameter('id', $id)
-            ->getQuery()
-            ->getResult()
-            ;
-    }
-
 }

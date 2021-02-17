@@ -41,4 +41,17 @@ class CategoryRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+    public function findCatNormal(int $id)
+    {
+        return $this->createQueryBuilder('c')
+            ->join('c.beers', 'b')
+            ->where('b.id = :id')
+            ->setParameter('id', $id)
+            ->andWhere('c.term = :term')
+            ->setParameter('term', 'normal')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
