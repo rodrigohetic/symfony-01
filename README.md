@@ -16,7 +16,7 @@ See setup infos & course's [instructions here](https://github.com/Antoine07/heti
 | EVANO Thomas       |
 | MARQUAND Camille   |
 
-## Part 4 (exercise)
+## Exercise - Part 4
 
 Explain (in french) this method :
 
@@ -40,6 +40,7 @@ La fonction `findCatSpecial()`, prend en argument l'`id` d'une bière et retourn
 
 - Ligne 1 : Construction de la requête sur la table `category` dont l'alias donné est `c`.
 - Ligne 2 : Jointure entre les tables `category` et `beer` en passant implicitement sur la table `beer_category` (cachée par l'orm).
+
 → Les tables `category` et `beer` ayant une relation ManyToMany.
 - Ligne 3 + 4 : Filtre sur l'`id` de la bière.
 - Ligne 5 + 6 : Filtre sur le `term special` de la `category`.
@@ -95,4 +96,11 @@ Compile assets automatically
 
 ```
  npm run watch
+```
+
+### Fill database
+```
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixtures:load
 ```
