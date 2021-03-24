@@ -132,9 +132,6 @@ EOT,
      * @Route("/quotes", name="quotes")
      */
     public function quotes(QuoteService $quote){
-
-        // dd($quote->getQuotes());
-
         return $this->render('quotes/index.html.twig', [
             'title' => 'Show service',
             'quotes' => $quote->getQuotes()

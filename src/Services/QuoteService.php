@@ -24,8 +24,10 @@ class QuoteService {
 
         foreach($quotes as $quote){
             $parseQuotes[] = [
+                'id' => $quote->getId(),
                 'title' => $quote->getTitle(),
                 'content' => $this->parser->parse($quote->getContent()),
+                'position' =>  $quote->getPosition(),
             ];
         }
 

@@ -9,11 +9,14 @@ class QuoteFixtures extends AppFixtures
     {
         $this->faker->addProvider(new \DavidBadura\FakerMarkdownGenerator\FakerProvider($this->faker));
 
-
         $this->createMany(10, 'quotes', function ($i) {
+        $positions = ['none', 'important'];
+
             return (new Quote())
                 ->setTitle($this->faker->catchPhrase)
-                ->setContent($this->faker->markdown);
+                ->setContent($this->faker->markdown)
+                ->setPosition($this->faker->randomElement($positions))
+                ->setCreatedAt($this->faker->dateTimeBetween());
         });
     }
 

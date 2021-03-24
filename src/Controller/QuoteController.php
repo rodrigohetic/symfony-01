@@ -34,7 +34,6 @@ class QuoteController extends AbstractController
 
         $form = $this->createForm(QuoteType::class, $quote);
 
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -49,6 +48,18 @@ class QuoteController extends AbstractController
             'quote' => $quote,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/quote_delete/{id}", name="quote_delete")
+     */
+    public function delete(Quote $quote): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($quote);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('quotes');
     }
 
 }
