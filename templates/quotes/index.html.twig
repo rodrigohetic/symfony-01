@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <h2 class="medium">{{quote['title']}}</h2>
                         {{ quote['content'] | raw }}
-
+                        <p class="card-text"><small class="text-muted">Mise en ligne le {{ quote.created_at | date('d/m/Y') }}</small></p>
                         <a class="btn btn-info" href="{{ path('quote_show', {'id': quote.id}) }}">show</a>
                     </div>
                 </div>

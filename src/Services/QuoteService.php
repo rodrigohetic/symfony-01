@@ -28,6 +28,7 @@ class QuoteService {
                 'title' => $quote->getTitle(),
                 'content' => $this->parser->parse($quote->getContent()),
                 'position' =>  $quote->getPosition(),
+                'created_at' =>  $quote->getCreatedAt(),
             ];
         }
 
@@ -43,6 +44,7 @@ class QuoteService {
             'title' => $quote->getTitle(),
             'content' => $this->parser->parse($quote->getContent()),
             'position' =>  $quote->getPosition(),
+            'created_at' =>  $quote->getCreatedAt(),
         ];
 
 

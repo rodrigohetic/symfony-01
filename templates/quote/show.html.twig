@@ -16,7 +16,7 @@
             <div class="card-body">
                 <h2 class="medium">{{quote['title']}}</h2>
                 {{ quote['content'] | raw }}
-
+                <p class="card-text"><small class="text-muted">Mise en ligne le {{ quote['created_at']|date('d/m/Y') }}</small></p>
                 <div class="row">
                     <div class="col-1">
                         <a class="btn btn-info" href="{{ path('quote_edit', {'id': quote.id}) }}">edit</a>
