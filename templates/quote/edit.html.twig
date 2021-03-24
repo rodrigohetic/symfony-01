@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Quote{% endblock %}
+
+{% block body %}
+    <div class="col-9">
+        <h1>Create new Quote</h1>
+        <a href="{{ path('quotes') }}">back to list</a>
+        <div class="card mb-5">
+            <div class="card-body">
+                <h5 class="card-title">form</h5>
+                {{ include('quote/_form.html.twig', {'button_label': 'Update','button_type': 'secondary'}) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

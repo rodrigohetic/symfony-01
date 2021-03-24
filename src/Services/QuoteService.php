@@ -34,4 +34,19 @@ class QuoteService {
         return $parseQuotes;
     }
 
+    public function getQuote($id):array{
+
+        $quote = $this->quoteRepo->findBy(['id'=>$id])[0];
+
+        $parseQuote = [
+            'id' => $quote->getId(),
+            'title' => $quote->getTitle(),
+            'content' => $this->parser->parse($quote->getContent()),
+            'position' =>  $quote->getPosition(),
+        ];
+
+
+        return $parseQuote;
+    }
+
 }

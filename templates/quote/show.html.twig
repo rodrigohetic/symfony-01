@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quote{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card__beers">
+                <div class="card-body">
+                    <h2 class="medium">{{quote['title']}}</h2>
+                    {{ quote['content'] | raw }}
+
+                    <a class="btn btn-info" href="{{ path('quote_edit', {'id': quote.id}) }}">edit</a>
+                    {{ include('quote/_delete_form.html.twig') }}
+                </div>
+            </div>
+            <a href="{{ path('quotes') }}">back to list</a>
+        </div>
+    </div>
+{% endblock %}

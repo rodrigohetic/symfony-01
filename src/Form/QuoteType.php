@@ -29,13 +29,9 @@ class QuoteType extends AbstractType
             ])
             ->add('position', ChoiceType::class,[
                 'choices'  => [
-                    'null' => null,
                     'aucune' => 'none',
                     'important' => 'important',
                     ]
-            ])
-            ->add('save', SubmitType::class, [
-                'label' => 'Create Quote'
             ])
         ;
     }
