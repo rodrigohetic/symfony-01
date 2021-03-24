@@ -14,6 +14,18 @@
         {% endblock %}
     </head>
     <body>
+        {# templates/base.html.twig #}
+
+        {# read and display just one flash message type #}
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" style="position: absolute; top: 25px; right: 25px;z-index: 5">
+                {{ message }}.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+
         {{render(controller('App\\Controller\\BarController:mainMenu',
         {
             'routeName' : app.request.attributes.get('_route'),

@@ -30,6 +30,11 @@ class QuoteController extends AbstractController
             $entityManager->persist($quote);
             $entityManager->flush();
 
+            $this->addFlash(
+                'notice',
+                'Your quote was created!'
+            );
+
             return $this->redirectToRoute('quotes');
         }
 
@@ -61,6 +66,11 @@ class QuoteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'notice',
+                'Your changes were saved!'
+            );
+
             return $this->redirectToRoute('quotes');
         }
 
@@ -79,6 +89,11 @@ class QuoteController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($quote);
             $entityManager->flush();
+
+            $this->addFlash(
+                'notice',
+                'quote deleted!'
+            );
         }
 
         return $this->redirectToRoute('quotes');
