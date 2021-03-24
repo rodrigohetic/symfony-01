@@ -8,10 +8,14 @@ use App\Repository\BeerRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\ClientRepository;
 use App\Repository\CountryRepository;
+use App\Services\QuoteService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use App\Services\Hello;
+use App\Services\HelperParser;
+use cebe\markdown\Markdown;
 
 class BarController extends AbstractController
 {
@@ -98,5 +102,45 @@ class BarController extends AbstractController
             'stdBeersBought' => implode($stdBeerBought[0])
         ]);
     }
+
+    /**
+     * @Route("/showservice", name="showservice")
+     */
+    public function showService(Hello $hello, HelperParser $translate){
+        $markdowns = [
+            '1' => <<<EOT
+# Recette nouvelle bière
+* Pommes
+* Poires
+    * Sous élément avec au moins quatre espaces devant.
+EOT,
+            '2' => <<<EOT
+# Deuxième recette de bière
+* Poires
+* Pommes
+    * Sous élément avec au moins quatre espaces devant.
+* Houblon
+EOT,
+        ];
+
+            return $this->render('showservice/index.html.twig', [
+                'title' => 'Show service',
+                'message' => $hello->say(),
+                'recipes' => $translate->translateHtml($markdowns)
+            ]);
+
+    }
+
+    /**
+     * @Route("/quotes", name="quotes")
+     */
+    public function quotes(QuoteService $quote){
+        return $this->render('quotes/index.html.twig', [
+            'title' => 'Show service',
+            'quotes' => $quote->getQuotes()
+
+        ]);
+    }
+
 
 }
