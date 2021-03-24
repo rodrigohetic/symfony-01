@@ -12,15 +12,12 @@
             </li>
         </ol>
     </nav>
-    <div class="row">
-        <div class="col-12">
-            <h1>Create new Quote</h1>
-            <div class="card mb-5">
-                <div class="card-body">
-                    <h5 class="card-title">form</h5>
-                    {{ include('quote/_form.html.twig',{'button_label': 'create new','button_type': 'primary'}) }}
-                    <a href="{{ path('quotes') }}">back to list</a>
-                </div>
+    <div class="col-12">
+        <h1>Create new Quote</h1>
+        <div class="card mb-5">
+            <div class="card-body">
+                <h5 class="card-title">form</h5>
+                {{ include('quote/_form.html.twig',{'button_label': 'create new','button_type': 'primary'}) }}
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\QuoteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=QuoteRepository::class)
@@ -22,16 +23,19 @@ class Quote
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Attention ce champ ne peut pas être vide")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Attention ce champ ne peut pas être vide")
      */
     private $content;
 
     /**
      * @ORM\Column(type="string", length=25, nullable=true)
+     * @Assert\Choice({"important", "none"} ,message="Attention ce champ ne peut pas être vide")
      */
     private $position;
 
@@ -42,6 +46,7 @@ class Quote
 
     public function __construct() {
         $this->setCreatedAt(new \DateTime('now'));
+        $this->setPosition('none');
     }
 
     public function getId(): ?int

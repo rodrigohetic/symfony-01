@@ -28,6 +28,7 @@ class QuoteType extends AbstractType
                 'label' => 'Markdown'
             ])
             ->add('position', ChoiceType::class,[
+                'required' => true,
                 'choices'  => [
                     'aucune' => 'none',
                     'important' => 'important',
