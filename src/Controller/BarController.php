@@ -8,6 +8,7 @@ use App\Repository\BeerRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\ClientRepository;
 use App\Repository\CountryRepository;
+use App\Services\QuoteService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -126,5 +127,20 @@ EOT,
             ]);
 
     }
+
+    /**
+     * @Route("/quotes", name="quotes")
+     */
+    public function quotes(QuoteService $quote){
+
+        // dd($quote->getQuotes());
+
+        return $this->render('quotes/index.html.twig', [
+            'title' => 'Show service',
+            'quotes' => $quote->getQuotes()
+
+        ]);
+    }
+
 
 }
