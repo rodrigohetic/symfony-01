@@ -21,6 +21,12 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
+    App\Services\Hello:
+        arguments:
+            - message: "Hello yaml configuration service"
+            - content: "Hello yaml configuration service"
+
+    cebe\markdown\Markdown: ~
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
     App\Controller\:

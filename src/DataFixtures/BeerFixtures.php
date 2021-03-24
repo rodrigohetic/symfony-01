@@ -36,7 +36,8 @@ class BeerFixtures extends AppFixtures implements DependentFixtureInterface
     {
         return [
             CountryFixtures::class,
-            CategoryFixtures::class
+            CategoryFixtures::class,
+            CategorySpeFixtures::class
         ];
     }
 
