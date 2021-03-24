@@ -4,17 +4,19 @@
 
 → Made for an HETIC course
 
-See setup infos & course's instructions [here](https://github.com/Antoine07/hetic_symfony/blob/main/Introduction/tp_02_days.md)
+See setup infos & course's [instructions here](https://github.com/Antoine07/hetic_symfony/blob/main/Introduction/tp_02_days.md)
 
-## Group 5
+## Team
 
-- AGNAN Pierre-Alain
-- TAPIA Rodrigo
-- BEN KEBAIER Selima
-- EVANO Thomas
-- MARQUAND Camille
+| Group  5           |
+| ------------------ |
+| AGNAN Pierre-Alain |
+| TAPIA Rodrigo      |
+| BEN KEBAIER Selima |
+| EVANO Thomas       |
+| MARQUAND Camille   |
 
-## Part 4 (exercise)
+## Exercise - Part 4
 
 Explain (in french) this method :
 
@@ -38,11 +40,16 @@ La fonction `findCatSpecial()`, prend en argument l'`id` d'une bière et retourn
 
 - Ligne 1 : Construction de la requête sur la table `category` dont l'alias donné est `c`.
 - Ligne 2 : Jointure entre les tables `category` et `beer` en passant implicitement sur la table `beer_category` (cachée par l'orm).
-  → Les tables `category` et `beer` ayant une relation ManyToMany.
+
+→ Les tables `category` et `beer` ayant une relation ManyToMany.
 - Ligne 3 + 4 : Filtre sur l'`id` de la bière.
 - Ligne 5 + 6 : Filtre sur le `term special` de la `category`.
 - Ligne 7 : Construction de la query.
 - Ligne 8 : Execution de la query.
+
+## UML
+
+[Find UML here](https://github.com/rodrigohetic/symfony-01/blob/master/assets/images/UML.png)
 
 ## Stack used
 
@@ -61,7 +68,13 @@ La fonction `findCatSpecial()`, prend en argument l'`id` d'une bière et retourn
 ### Lauch local server
 
 ```
-symfony server:start
+ symfony server:start
+ npm run dev-server
+```
+
+in `.env`
+```env
+ DATABASE_URL="mysql://db_user:db_password@127.0.0.1:<USED_PORT>/db_name?serverVersion=5.7"
 ```
 
 ### Compile
@@ -69,23 +82,25 @@ symfony server:start
 Install dependancies
 
 ```
+ composer install
  npm i
 ```
 
-Compile assets once
+Build project
 
 ```
- npm run dev
+ npm run build
 ```
 
 Compile assets automatically
 
 ```
-npm run watch
+ npm run watch
 ```
 
-Build
-
+### Fill database
 ```
-npm run build
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixtures:load
 ```

@@ -33,12 +33,6 @@
         }))}}
         <div class="container">
             <div class="row">
-                {% if app.request.attributes.get('_route') == "beers" or
-                    app.request.attributes.get('_route') == "category" %}
-                    <div class="col-3">
-                        {% include '_partials/sidebar.html.twig' %}
-                    </div>
-                {% endif %}
                 {% block body %}{% endblock %}
             </div>
         </div>

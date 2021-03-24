@@ -22,29 +22,21 @@ class ClientRepository extends ServiceEntityRepository
     // /**
     //  * @return Client[] Returns an array of Client objects
     //  */
-    /*
-    public function findByExampleField($value)
+    public function getAvgNumberBeerByClient()
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            ->select('AVG(c.number_beer)')
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Client
+    public function getStdNumberBeerByClient()
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
+            ->select('STD(c.number_beer)')
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult()
+            ;
     }
-    */
 }

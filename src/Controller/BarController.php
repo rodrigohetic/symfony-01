@@ -59,7 +59,7 @@ class BarController extends AbstractController
     public function beer(Beer $beer, CategoryRepository $repoCat, CountryRepository $repoCountry): Response
     {
         $beerCatSpecial = $repoCat->findCatSpecial($beer->getId());
-        $beerCatNormal = $repoCat->findByTerm('normal');
+        $beerCatNormal = $repoCat->findCatNormal($beer->getId());
         $beerCountry = $repoCountry->findCountryByBeerId($beer->getId());
 
         return $this->render('beer/index.html.twig', [
@@ -76,8 +76,7 @@ class BarController extends AbstractController
     /**
      * @Route("/menu", name="menu")
      */
-    public function mainMenu(string $category_id, string $routeName): Response{
-        $repoCat= $this->getDoctrine()->getRepository(Category::class);
+    public function mainMenu(CategoryRepository $repoCat, string $category_id, string $routeName): Response{
         $categories = $repoCat ->findByTerm('normal');
 
         return $this->render('_partials/menu.html.twig', [
@@ -92,11 +91,15 @@ class BarController extends AbstractController
      */
     public function statistic(ClientRepository $clientRepo): Response{
         $clients = $clientRepo->findAll();
+        $avgBeerBought = $clientRepo->getAvgNumberBeerByClient();
+        $stdBeerBought = $clientRepo->getStdNumberBeerByClient();
 
         return $this->render('statistic/index.html.twig', [
             'controller_name' => 'StatisticController',
-            'title' => "Statistic",
-            'clients' => $clients
+            'title' => "Statistiques",
+            'clients' => $clients,
+            'avgBeersBought' => implode($avgBeerBought[0]),
+            'stdBeersBought' => implode($stdBeerBought[0])
         ]);
     }
 
