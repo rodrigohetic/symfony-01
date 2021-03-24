@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Quote;
 use App\Form\QuoteType;
-use App\Repository\QuoteRepository;
 use App\Services\QuoteService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,16 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class QuoteController extends AbstractController
 {
-
-    /**
-     * @Route("/", name="quote_index", methods={"GET"})
-     */
-    public function index(QuoteRepository $quoteRepository): Response
-    {
-        return $this->render('quote/index.html.twig', [
-            'quotes' => $quoteRepository->findAll(),
-        ]);
-    }
 
     /**
      * @Route("/new", name="quote_new", methods={"GET","POST"})
@@ -41,7 +30,7 @@ class QuoteController extends AbstractController
             $entityManager->persist($quote);
             $entityManager->flush();
 
-            return $this->redirectToRoute('quote_index');
+            return $this->redirectToRoute('quotes');
         }
 
         return $this->render('quote/new.html.twig', [
