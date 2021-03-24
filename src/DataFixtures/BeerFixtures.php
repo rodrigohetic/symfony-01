@@ -18,7 +18,7 @@ class BeerFixtures extends AppFixtures implements DependentFixtureInterface
             return (new Beer())
                 ->setName($this->faker->lastName . ' Beer')
                 ->setCountry($country)
-                ->setDescription($this->faker->paragraph(3, true))
+                ->setDescription($this->faker->paragraph(1, true))
                 ->setDegree($this->faker->randomFloat(2, 3, 100))
                 ->setPrice($this->faker->randomFloat(2,2,10))
                 ->setPublishedAt($this->faker->dateTimeBetween('-6 month'))
