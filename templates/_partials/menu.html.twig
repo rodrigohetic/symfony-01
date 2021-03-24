@@ -21,6 +21,12 @@
             <li class="nav-item">
                 <a class="nav-link text-primary {% if routeName == "statistic" %}active font-weight-bold{% endif %}" href="{{ path('statistic') }}">statistic</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-primary {% if routeName == "quotes" %} active {% endif %}" href="{{ path('quotes') }}">Quotes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-primary {% if routeName == "quote_new" %} active {% endif %}" href="{{ path('quote_new') }}">Add quote</a>
+            </li>
         </ul>
     </div>
 </nav>

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    <p>{{ message }}</p>
+    <div class="row">
+        {# Twig échappe les caractères spéciaux
+			{{ markdown | raw }}
+        #}
+        {% for recipe in recipes %}
+            {{ recipe | raw }}
+        {% endfor %}
+    </div>
+{% endblock %}

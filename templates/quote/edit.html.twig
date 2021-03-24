@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Quote{% endblock %}
+
+{% block body %}
+    <nav class="col-12" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="{{ path('quotes') }}">Back To List</a>
+                <li class="breadcrumb-item active" aria-current="page">Quote</li>
+            </li>
+        </ol>
+    </nav>
+    <div class="col-12">
+        <h1>edit Quote</h1>
+        <div class="card mb-5">
+            <div class="card-body">
+                <h5 class="card-title">form</h5>
+                {{ include('quote/_form.html.twig', {'button_label': 'Update','button_type': 'secondary'}) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

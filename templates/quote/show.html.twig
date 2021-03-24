@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quote{% endblock %}
+
+{% block body %}
+    <nav class="col-12" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                <a href="{{ path('quotes') }}">Back To List</a>
+            <li class="breadcrumb-item active" aria-current="page">Quote</li>
+            </li>
+        </ol>
+    </nav>
+    <div class="col-sm-12">
+        <div class="card card__beers">
+            <div class="card-body">
+                <h2 class="medium">{{quote['title']}}</h2>
+                {{ quote['content'] | raw }}
+                <p class="card-text"><small class="text-muted">Mise en ligne le {{ quote['created_at']|date('d/m/Y') }}</small></p>
+                <div class="row">
+                    <div class="col-1">
+                        <a class="btn btn-info" href="{{ path('quote_edit', {'id': quote.id}) }}">edit</a>
+                    </div>
+                    <div class="col-1">
+                        {{ include('quote/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
