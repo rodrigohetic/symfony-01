@@ -3,11 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Quote;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use App\Form\QuoteType;
 use App\Repository\QuoteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,11 +32,8 @@ class QuoteController extends AbstractController
     {
         $quote = new Quote();
 
-        $form = $this->createFormBuilder($quote)
-            ->add('title', TextType::class, ['required' => true, 'label' => 'Titre de la citation '])
-            ->add('content', TextareaType::class, ['required' => true, 'label' => 'Markdown '])
-            ->add('save', SubmitType::class, ['label' => 'Create Quote'])
-            ->getForm();
+        $form = $this->createForm(QuoteType::class, $quote);
+
 
         $form->handleRequest($request);
 
